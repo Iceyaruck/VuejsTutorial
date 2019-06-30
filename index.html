@@ -1,0 +1,202 @@
+<!<!DOCTYPE html>
+  <html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>
+      Vue.js Tutorial
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      body {
+        background-color: gray;
+        color: white;
+      }
+
+      .red {
+        color: #a20606;
+      }
+
+      .disabled {
+        pointer-events: none; //This makes it not clickable
+        opacity: 0.6; //This grays it out to look disabled
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="vue-app">
+      <div class="">
+        <h1 class="red"> Call Data</h1>
+        <ul>
+          <li>{{message}}</li>
+          <li>{{name}}</li>
+          <li>{{job}}</li>
+          <li>{{age}}</li>
+        </ul>
+      </div>
+      <hr>
+      <div class="">
+        <h1 class="red"> Use Methods</h1>
+        <ul>
+          <li>{{getName()}}</li>
+          <!-- <li>{{setName('IceYahz')}}</li> -->
+        </ul>
+      </div>
+      <hr>
+      <div class="">
+        <h1 class="red"> v-bind</h1>
+        <a v-bind:href="googleLink">click link</a>
+        <input type="text" name="" v-bind:value="name" class="disabled">
+      </div>
+      <hr>
+      <div class="">
+        <h1> Event Handler</h1>
+        <h2>{{age}}</h4>
+          <button type="button" name="button" v-on:click="addAge">Add Age</button>
+          <button type="button" name="button" v-on:click="subtractAge">Subtract Age</button>
+      </div>
+      <hr>
+      <div class="">
+        <h1 class="red"> Keyboard Event</h1>
+        <button type="button" name="button" v-on:click="resetCountKeyup">Reset</button>
+        <h2>{{countKeyup}}</h4>
+          <input type="text" placeholder="เมื่อพิมพ์" v-on:keyup="addcountKeyup" v-model="inputCountKeyup">
+          <br>
+          <h2>{{countKeyupEnter}}</h4>
+            <input type="text" placeholder="เมื่อ enter" v-on:keyup.enter="addcountKeyupEnter" v-model="inputCountKeyupEnter">
+            <br>
+            <i> ดูเพิ่มได้ที่ key modifiers ของ Vue.js</i>
+      </div>
+      <hr>
+      <div class="">
+        <h1 class="red"> Two Way Data Binding</h1>
+        <h2>Text Box</h2>
+        <input type="text" v-model="phonNumber"> </textarea>
+        <label>โทร:</label> <span> {{phonNumber}}</span>
+        <br>
+        <h2>Text Area</h2>
+        <textarea placeholder="บ่นอะไรก็ได้" rows="4" v-model="complain"> </textarea>
+        <label>บ่นว่า:</label> <span> {{complain}}</span>
+        <br>
+        <h2>Check Box</h2>
+        <label> เคยดูไรมั้ง: </label>
+        <input type="checkbox" id="movie1" value="Forrest Gump" v-model="movies">
+        <label for="movie1"> Forrest Gump</label>
+        <input type="checkbox" id="movie2" value="The Loard of the Ring" v-model="movies">
+        <label for="movie2"> The Loard of the Ring</label>
+        <input type="checkbox" id="movie3" value="The Social Network" v-model="movies">
+        <label for="movie3"> The Social Network</label>
+        <input type="checkbox" id="movie4" value="Toy Story" v-model="movies">
+        <label for="movie4"> Toy Story</label>
+        <input type="checkbox" id="movie5" value="The Avengers" v-model="movies">
+        <label for="movie5"> The Avengers</label>
+        <br>
+        <span>เคยดู: {{ movies }}</span>
+        <br>
+        <h2>Radio Button</h2>
+        <label> ดูแบบไหน: </label>
+        <br>
+        <input type="radio" id="thai" value="พากษ์ไทย" v-model="watchType">
+        <label for="thai"> พากษ์ไทย</label>
+        <br>
+        <input type="radio" id="soundtrack" value="ซาวด์แทรค" v-model="watchType">
+        <label for="soundtrack"> ซาวด์แทรคอ่านซับ</label>
+        <br>
+        <span>เลือก: {{ watchType }} </span>
+        <br>
+        <h2>Select Option (Dropdown)</h2>
+        <select v-model="mostLikeSong">
+          <option disabled value="">เลือกเพลงโปรด</option>
+          <option>ชีวิตยังคงสวยงาม</option>
+          <option>เพราะเธอยังลืมเขาไม่ได้</option>
+          <option>ดัม-มะ-ชา-ติ</option>
+        </select>
+        <span>เพลงโปรดคือ: {{ mostLikeSong }} </span>
+      </div>
+      <hr>
+      <div class="">
+        <h1 class="red"> Condition v-if</h1>
+        <button type="button" name="button" v-on:click="checkLike">Like</button>
+        <label v-if="like">ถูกใจ</label>
+      </div>
+      <hr>
+      <div class="">
+        <h1 class="red"> Loop v-for</h1>
+        <label> แสดงระบุช่อง 1: {{songsDatas[0]}}</label>
+        <br>
+        <label> แสดงระบุช่อง 2: {{songsDatas[0]}}</label>
+        <br>
+        <label> แสดงระบุช่อง 3: {{songsDatas[0]}}</label>
+        <br>
+        <br>
+        <label> แสงแบบวนลูป</label>
+        <ul>
+          <li v-for="song in songsDatas"> {{song}}</li>
+        </ul>
+        <br>
+        <br>
+        <label> อาเรย์สองมิติ</label>
+        <ul>
+          <li v-for="songDetail in songDetails">
+            เพลง: {{songDetail.name}} <br>
+            ศิลปิน: {{songDetail.artist}} <br>
+            ความยาว(นาที): {{songDetail.length}}
+          </li>
+        </ul>
+      </div>
+      <hr>
+      <hr>
+      <div class="">
+        <h1 class="red"> Method</h1>
+        <span> ชื่อพนักงาน: </span>
+        <input placeholder="กรอกชื่อ" v-model="newEmpData.empName">
+        <span> เงินเดือน: </span>
+        <input placeholder="กรอกเงินเดือน" v-model="newEmpData.saraly">
+        <br>
+        <button @click="addEmp"> บันทึกข้อมูล </button>
+        <br>
+        <ul>
+          <li v-for="emp in oldEmp">
+            {{emp.empName}} ได้เงินเดือน: {{emp.saraly}} บาท
+          </li>
+        </ul>
+      </div>
+      <hr>
+      <div class="">
+        <h1 class="red"> Computed </h1>
+        <ul>
+          <li v-for="emp in oldEmp">
+            {{emp.empName}} ได้เงินเดือน: {{emp.saraly}} บาท
+          </li>
+        </ul>
+        <h2> รวมเงินเดือนเท่ากับ: {{sumSalary}}</h2>
+        <h2> ค่าเฉลี่ยเงินเดือน: {{avgSalary}}</h2>
+      </div>
+      <hr>
+      <div class="">
+        <h1 class="red"> Watcher </h1>
+        <label> เมื่อทำการคำนวณเงินเดือนแล้ว ให้โชว์ alert</label>
+      </div>
+      <hr>
+    </div>
+    <hr>
+    <hr>
+    <h1 class="red"> Multiple Vue </h1>
+    <div id="post">
+      <label> หัวข้อ:</label> <span> {{title}}</span>
+       <br>
+      <label> รายละเอียด:</label> <span> {{detail}}</span>
+    </div>
+    <div id="comment">
+      <textarea name="name" rows="4" cols="80">
+        {{text}}
+      </textarea>
+    </div>
+    <div id="likeSystem">
+      <button type="button" name="button" v-on:click="changeLike()"> Like </button>  <span >  {{like}} </span>
+    </div>
+    <script <script src="app.js" charset="utf-8"></script>
+  </body>
+
+  </html>
