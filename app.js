@@ -136,8 +136,30 @@ var likeSystem = new Vue({
     like: false
   },
   methods: {
-    changeLike: function(){
+    changeLike: function() {
       this.like = !this.like;
     }
   }
 });
+
+Vue.component('iceyahz', { //ชื่อห้ามมีอักษรตัวใหญ่
+  data: function() {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">Click: {{count}}</button>'
+});
+
+Vue.component('iceyaruck', { //ชื่อห้ามมีอักษรตัวใหญ่
+  props: ['title'],
+  template: '<h3> {{title}}</h3>'
+});
+
+var customComponent = new Vue({
+  el: "#custom-component"
+})
+
+var customComponentProps = new Vue({
+  el: "#custom-component-props"
+})

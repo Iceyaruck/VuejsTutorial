@@ -185,16 +185,29 @@
     <h1 class="red"> Multiple Vue </h1>
     <div id="post">
       <label> หัวข้อ:</label> <span> {{title}}</span>
-       <br>
+      <br>
       <label> รายละเอียด:</label> <span> {{detail}}</span>
     </div>
     <div id="comment">
       <textarea name="name" rows="4" cols="80">
-        {{text}}
+      {{text}}
       </textarea>
     </div>
     <div id="likeSystem">
-      <button type="button" name="button" v-on:click="changeLike()"> Like </button>  <span >  {{like}} </span>
+      <button type="button" name="button" v-on:click="changeLike()"> Like </button> <span> {{like}} </span>
+    </div>
+    <hr>
+    <hr>
+    <div id="custom-component">
+      <h1 class="red"> Vue Component </h1>
+      <h3> สร้าง tag html มาใช้ </h1>
+        <iceyahz></iceyahz>
+    </div>
+    <hr>
+    <div id="custom-component-props">
+      <h1 class="red"> Vue Component - Props </h1>
+      <iceyaruck title="My Name is Aiyaruck Iceyaruck ^_^"></iceyaruck>
+      <iceyaruck title="My Nickname is Ice IceyaHz ^_^"></iceyaruck>
     </div>
     <script <script src="app.js" charset="utf-8"></script>
   </body>
