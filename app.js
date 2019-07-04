@@ -156,10 +156,38 @@ Vue.component('iceyaruck', { //ชื่อห้ามมีอักษรต�
   template: '<h3> {{title}}</h3>'
 });
 
-var customComponent = new Vue({
-  el: "#custom-component"
-})
+Vue.component('showview', {
+  props: {
+    name: {
+      type: String,
+      required: true //ต้องระบุทุกครั้งเมื่อเรียกใช้ showview
+    },
+    view: {
+      type: Number, //ตัวเลข
+      default: 0 //กำหนดค่าเริ่มต้น ถ้าไม่ระบุค่ามา
+    }
+  },
+  template: '<h2> {{name}} // {{view}}</h2>'
+});
 
-var customComponentProps = new Vue({
-  el: "#custom-component-props"
+Vue.component('world', {
+  props: ['item', 'index'],
+  template: '<h3> {{index + 1}}. {{item}} </h3>'
+});
+
+var customComponent = new Vue({
+  el: "#custom-component",
+  data: {
+    newLand: '',
+    lands: [
+      'ไทย', 'อังกฤษ', 'สหรัฐอเมริกา', 'คองโก'
+    ]
+  },
+  methods: {
+    //เพิ่มประเทศใหม่
+    addLand: function() {
+      this.lands.push(this.newLand) //เอาค่าใหม่ไปใส่อันเก่า
+      this.newLand = '' //เคลียร์ค่าให้ว่าง
+    }
+  }
 })

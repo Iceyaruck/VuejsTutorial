@@ -51,7 +51,7 @@
       </div>
       <hr>
       <div class="">
-        <h1> Event Handler</h1>
+        <h1 class="red"> Event Handler</h1>
         <h2>{{age}}</h4>
           <button type="button" name="button" v-on:click="addAge">Add Age</button>
           <button type="button" name="button" v-on:click="subtractAge">Subtract Age</button>
@@ -201,15 +201,31 @@
     <div id="custom-component">
       <h1 class="red"> Vue Component </h1>
       <h3> สร้าง tag html มาใช้ </h1>
-        <iceyahz></iceyahz>
+        <iceyahz>
+        </iceyahz>
+        <hr>
+        <h1 class="red"> Vue Component - Props </h1>
+        <iceyaruck title="My Name is Aiyaruck Iceyaruck ^_^"></iceyaruck>
+        <iceyaruck title="My Nickname is Ice IceyaHz ^_^"></iceyaruck>
+        <hr>
+        <h1 class="red"> Vue Component - Props Validate </h1>
+        <showview name="Name 001" v-bind:view="101"> การแสดงตัวเลขต้องมี v-bind
+        </showview>
+        <showview name="Name 002">
+        </showview>
+        <showview name="Name 003">
+        </showview>
+        <hr>
+        <h1 class="red"> Vue Component & Data </h1>
+        <ul>
+          <li v-for="(land, index) in lands" is="world" v-bind:item="land" v-bind:index="index"> //is ไว้เรียกใช้ component
+
+          </li>
+        </ul>
+        <input type="text" v-model="newLand" v-on:keyup.enter="addLand()"> //เมื่อกด enter จะเรียกใช้ฟังก์ชั่นใน methods.
+        <hr>
+        <h1 class="red"> Vue Component & Slots </h1>
     </div>
-    <hr>
-    <div id="custom-component-props">
-      <h1 class="red"> Vue Component - Props </h1>
-      <iceyaruck title="My Name is Aiyaruck Iceyaruck ^_^"></iceyaruck>
-      <iceyaruck title="My Nickname is Ice IceyaHz ^_^"></iceyaruck>
-    </div>
-    ทดสอบ Git
     <script <script src="app.js" charset="utf-8"></script>
   </body>
 
