@@ -175,8 +175,15 @@ Vue.component('world', {
   template: '<h3> {{index + 1}}. {{item}} </h3>'
 });
 
+var band = {
+  template: '#musicBand'
+};
+
 var customComponent = new Vue({
   el: "#custom-component",
+  components:{
+    musicBandApp:band
+  },
   data: {
     newLand: '',
     lands: [

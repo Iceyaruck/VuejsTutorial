@@ -225,6 +225,20 @@
         <input type="text" v-model="newLand" v-on:keyup.enter="addLand()"> //เมื่อกด enter จะเรียกใช้ฟังก์ชั่นใน methods.
         <hr>
         <h1 class="red"> Vue Component & Slots </h1>
+        <music-band-app>
+          ghgh
+        </music-band-app>
+        <music-band-app>
+          sdfdsf
+        </music-band-app>
+        <template id="musicBand">
+          <div id="band">
+            <h4> วงดนตรี ทั่วโลก</h4>
+            <slot> </slot>
+            <label> พามารู้จักไง</label>
+          </div>
+        </template>
+
     </div>
     <script <script src="app.js" charset="utf-8"></script>
   </body>
